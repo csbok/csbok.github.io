@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>expo-react-native-unimodules - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="Expo기존에는 expo-cli를 통해서 생성한 React Native 앱만 expo sdk를 사용할 수 있었다.장점은 expo가 정제한 네이티브 모듈을 쉽게 갖다 쓸수 있다는 점이였지만, 모든 네이티브 모듈을 포함하고 있어서 용량이 큰게 단점이였다.   그런데 이 단점을 어느정도 해소시켜줄 unimodules이 나왔다. 네이티브 모듈을 위한 코드가 Exp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="expo-react-native-unimodules">
+<meta property="og:url" content="http://yoursite.com/2019/03/19/expo-react-native-unimodules/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Expo기존에는 expo-cli를 통해서 생성한 React Native 앱만 expo sdk를 사용할 수 있었다.장점은 expo가 정제한 네이티브 모듈을 쉽게 갖다 쓸수 있다는 점이였지만, 모든 네이티브 모듈을 포함하고 있어서 용량이 큰게 단점이였다.   그런데 이 단점을 어느정도 해소시켜줄 unimodules이 나왔다. 네이티브 모듈을 위한 코드가 Exp">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-04-23T14:32:12.404Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="expo-react-native-unimodules">
+<meta name="twitter:description" content="Expo기존에는 expo-cli를 통해서 생성한 React Native 앱만 expo sdk를 사용할 수 있었다.장점은 expo가 정제한 네이티브 모듈을 쉽게 갖다 쓸수 있다는 점이였지만, 모든 네이티브 모듈을 포함하고 있어서 용량이 큰게 단점이였다.   그런데 이 단점을 어느정도 해소시켜줄 unimodules이 나왔다. 네이티브 모듈을 위한 코드가 Exp">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-51076120-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-51076120-4');
+</script>
+
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Finesoft.net
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="검색" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/csbok">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope="" itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            expo-react-native-unimodules
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-03-19T10:12:20.000Z" itemprop="datePublished">3월 19 2019</time>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h3 id="Expo"><a href="#Expo" class="headerlink" title="Expo"></a>Expo</h3><p>기존에는 expo-cli를 통해서 생성한 React Native 앱만 expo sdk를 사용할 수 있었다.<br>장점은 expo가 정제한 네이티브 모듈을 쉽게 갖다 쓸수 있다는 점이였지만, 모든 네이티브 모듈을 포함하고 있어서 용량이 큰게 단점이였다.  </p>
+<p>그런데 이 단점을 어느정도 해소시켜줄 unimodules이 나왔다.</p>
+<p>네이티브 모듈을 위한 코드가 Expo의 자산인지라, flutter가 나왔을때 React Native를 위해 만든 네이티브 모듈 코드를 재사용하기 위해 Unimodules가 만들어진것으로 보이며 이를 이용하여 expo-cli로 만들지 않은 일반 React Native 앱에서도 필요한 네이티브 모듈만 따로 설치하여 Expo SDK를 사용할 수 있게되었다.<br><a id="more"></a>(이를 bare 방식이라 부른다. 기존처럼 expo 앱에 올릴수 있는건 managed 방식이라 부른다.)</p>
+<p>리액트 네이티브에서 지원되는 유니모듈 리스트<br><a href="https://docs.expo.io/versions/v32.0.0/bare/unimodules-full-list/" target="_blank" rel="noopener">https://docs.expo.io/versions/v32.0.0/bare/unimodules-full-list/</a></p>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment"># expo cli 설치</span></span><br><span class="line">npm i -g expo-cli</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># react-native-cli 설치</span></span><br><span class="line">npm i -g react-native-cli</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># expo sdk를 선택해서 추가할수 있는 보일러 플레이트로 프로젝트 생성</span></span><br><span class="line">expo init --template bare-minimum</span><br></pre></td></tr></table></figure>
+<p>이후 프로젝트 폴더로 이동한 후 필요한 expo 모듈을 설치한다.</p>
+<h4 id="expo-sqlite"><a href="#expo-sqlite" class="headerlink" title="expo-sqlite"></a>expo-sqlite</h4><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm install expo-sqlite</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment"># 이 패키지도 설치해줘야 expo-sqlite가 정상 작동한다. 삽질을 하게 만든놈.</span></span><br><span class="line">npm install lodash.zipobject</span><br></pre></td></tr></table></figure>
+<p>이후 App.js 를 아래와 같이 수정한다. (expo-sqlite의 예제를 bare로 import하게 변경)<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">mport React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; StyleSheet, Text, View, TextInput, TouchableOpacity &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react-native'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; SQLite &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'expo-sqlite'</span>;</span><br><span class="line"><span class="hljs-keyword">import</span> &#123; Asset, Constants, FileSystem, Permissions &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">'react-native-unimodules'</span>;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> db = SQLite.openDatabase(<span class="hljs-string">'db.db'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Items</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    items: <span class="hljs-literal">null</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.update();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-keyword">const</span> &#123; <span class="hljs-attr">done</span>: doneHeading &#125; = <span class="hljs-keyword">this</span>.props;</span><br><span class="line">    <span class="hljs-keyword">const</span> &#123; items &#125; = <span class="hljs-keyword">this</span>.state;</span><br><span class="line">    <span class="hljs-keyword">const</span> heading = doneHeading ? <span class="hljs-string">'Completed'</span> : <span class="hljs-string">'Todo'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span> (items === <span class="hljs-literal">null</span> || items.length === <span class="hljs-number">0</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">      &lt;View style=&#123;&#123; <span class="hljs-attr">marginBottom</span>: <span class="hljs-number">16</span>, <span class="hljs-attr">marginHorizontal</span>: <span class="hljs-number">16</span> &#125;&#125;&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.sectionHeading&#125;&gt;&#123;heading&#125;&lt;<span class="hljs-regexp">/Text&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &#123;items.map((&#123; id, done, value &#125;) =&gt; (</span></span><br><span class="line"><span class="hljs-regexp">          &lt;TouchableOpacity</span></span><br><span class="line"><span class="hljs-regexp">            key=&#123;id&#125;</span></span><br><span class="line"><span class="hljs-regexp">            onPress=&#123;() =&gt; this.props.onPressItem &amp;&amp; this.props.onPressItem(id)&#125;</span></span><br><span class="line"><span class="hljs-regexp">            style=&#123;&#123;</span></span><br><span class="line"><span class="hljs-regexp">              backgroundColor: done ? '#1c9963' : '#fff',</span></span><br><span class="line"><span class="hljs-regexp">              borderColor: '#000',</span></span><br><span class="line"><span class="hljs-regexp">              borderWidth: 1,</span></span><br><span class="line"><span class="hljs-regexp">              padding: 8</span></span><br><span class="line"><span class="hljs-regexp">            &#125;&#125;&gt;</span></span><br><span class="line"><span class="hljs-regexp">            &lt;Text style=&#123;&#123; color: done ? '#fff' : '#000' &#125;&#125;&gt;&#123;value&#125;&lt;/</span>Text&gt;</span><br><span class="line">          &lt;<span class="hljs-regexp">/TouchableOpacity&gt;</span></span><br><span class="line"><span class="hljs-regexp">        ))&#125;</span></span><br><span class="line"><span class="hljs-regexp">      &lt;/</span>View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  update() &#123;</span><br><span class="line">    db.transaction(<span class="hljs-function"><span class="hljs-params">tx</span> =&gt;</span> &#123;</span><br><span class="line">      tx.executeSql(</span><br><span class="line">        <span class="hljs-string">`select * from items where done = ?;`</span>,</span><br><span class="line">        [<span class="hljs-keyword">this</span>.props.done ? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>],</span><br><span class="line">        (_, &#123; <span class="hljs-attr">rows</span>: &#123; _array &#125; &#125;) =&gt; <span class="hljs-keyword">this</span>.setState(&#123; <span class="hljs-attr">items</span>: _array &#125;)</span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123;</span><br><span class="line">    text: <span class="hljs-literal">null</span></span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    db.transaction(<span class="hljs-function"><span class="hljs-params">tx</span> =&gt;</span> &#123;</span><br><span class="line">      tx.executeSql(</span><br><span class="line">        <span class="hljs-string">'create table if not exists items (id integer primary key not null, done int, value text);'</span></span><br><span class="line">      );</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> (</span><br><span class="line">      &lt;View style=&#123;styles.container&#125;&gt;</span><br><span class="line">        &lt;Text style=&#123;styles.heading&#125;&gt;SQLite Example&lt;<span class="hljs-regexp">/Text&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;View style=&#123;styles.flexRow&#125;&gt;</span></span><br><span class="line"><span class="hljs-regexp">          &lt;TextInput</span></span><br><span class="line"><span class="hljs-regexp">            style=&#123;styles.input&#125;</span></span><br><span class="line"><span class="hljs-regexp">            placeholder="what do you need to do?"</span></span><br><span class="line"><span class="hljs-regexp">            value=&#123;this.state.text&#125;</span></span><br><span class="line"><span class="hljs-regexp">            onChangeText=&#123;text =&gt; this.setState(&#123; text &#125;)&#125;</span></span><br><span class="line"><span class="hljs-regexp">            onSubmitEditing=&#123;() =&gt; &#123;</span></span><br><span class="line"><span class="hljs-regexp">              this.add(this.state.text);</span></span><br><span class="line"><span class="hljs-regexp">              this.setState(&#123; text: null &#125;);</span></span><br><span class="line"><span class="hljs-regexp">            &#125;&#125;</span></span><br><span class="line"><span class="hljs-regexp">          /</span>&gt;</span><br><span class="line">        &lt;<span class="hljs-regexp">/View&gt;</span></span><br><span class="line"><span class="hljs-regexp">        &lt;View style=&#123;styles.listArea&#125;&gt;</span></span><br><span class="line"><span class="hljs-regexp">          &lt;Items</span></span><br><span class="line"><span class="hljs-regexp">            done=&#123;false&#125;</span></span><br><span class="line"><span class="hljs-regexp">            ref=&#123;todo =&gt; (this.todo = todo)&#125;</span></span><br><span class="line"><span class="hljs-regexp">            onPressItem=&#123;id =&gt;</span></span><br><span class="line"><span class="hljs-regexp">              db.transaction(</span></span><br><span class="line"><span class="hljs-regexp">                tx =&gt; &#123;</span></span><br><span class="line"><span class="hljs-regexp">                  tx.executeSql(`update items set done = 1 where id = ?;`, [id]);</span></span><br><span class="line"><span class="hljs-regexp">                &#125;,</span></span><br><span class="line"><span class="hljs-regexp">                null,</span></span><br><span class="line"><span class="hljs-regexp">                this.update</span></span><br><span class="line"><span class="hljs-regexp">              )&#125;</span></span><br><span class="line"><span class="hljs-regexp">          /</span>&gt;</span><br><span class="line">          &lt;Items</span><br><span class="line">            done=&#123;<span class="hljs-literal">true</span>&#125;</span><br><span class="line">            ref=&#123;done =&gt; (<span class="hljs-keyword">this</span>.done = done)&#125;</span><br><span class="line">            onPressItem=&#123;id =&gt;</span><br><span class="line">              db.transaction(</span><br><span class="line">                tx =&gt; &#123;</span><br><span class="line">                  tx.executeSql(<span class="hljs-string">`delete from items where id = ?;`</span>, [id]);</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="hljs-literal">null</span>,</span><br><span class="line">                <span class="hljs-keyword">this</span>.update</span><br><span class="line">              )&#125;</span><br><span class="line">          /&gt;</span><br><span class="line">        &lt;<span class="hljs-regexp">/View&gt;</span></span><br><span class="line"><span class="hljs-regexp">      &lt;/</span>View&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  add(text) &#123;</span><br><span class="line">    db.transaction(</span><br><span class="line">      tx =&gt; &#123;</span><br><span class="line">        tx.executeSql(<span class="hljs-string">'insert into items (done, value) values (0, ?)'</span>, [text]);</span><br><span class="line">        tx.executeSql(<span class="hljs-string">'select * from items'</span>, [], (_, &#123; rows &#125;) =&gt;</span><br><span class="line">          <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">JSON</span>.stringify(rows))</span><br><span class="line">        );</span><br><span class="line">      &#125;,</span><br><span class="line">      <span class="hljs-literal">null</span>,</span><br><span class="line">      <span class="hljs-keyword">this</span>.update</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  update = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.todo &amp;&amp; <span class="hljs-keyword">this</span>.todo.update();</span><br><span class="line">    <span class="hljs-keyword">this</span>.done &amp;&amp; <span class="hljs-keyword">this</span>.done.update();</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">const</span> styles = StyleSheet.create(&#123;</span><br><span class="line">  container: &#123;</span><br><span class="line">    backgroundColor: <span class="hljs-string">'#fff'</span>,</span><br><span class="line">    flex: <span class="hljs-number">1</span>,</span><br><span class="line">    paddingTop: Constants.statusBarHeight,</span><br><span class="line">  &#125;,</span><br><span class="line">  heading: &#123;</span><br><span class="line">    fontSize: <span class="hljs-number">20</span>,</span><br><span class="line">    fontWeight: <span class="hljs-string">'bold'</span>,</span><br><span class="line">    textAlign: <span class="hljs-string">'center'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  flexRow: &#123;</span><br><span class="line">    flexDirection: <span class="hljs-string">'row'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  input: &#123;</span><br><span class="line">    borderColor: <span class="hljs-string">'#4630eb'</span>,</span><br><span class="line">    borderRadius: <span class="hljs-number">4</span>,</span><br><span class="line">    borderWidth: <span class="hljs-number">1</span>,</span><br><span class="line">    flex: <span class="hljs-number">1</span>,</span><br><span class="line">    height: <span class="hljs-number">48</span>,</span><br><span class="line">    margin: <span class="hljs-number">16</span>,</span><br><span class="line">    padding: <span class="hljs-number">5</span></span><br><span class="line">  &#125;,</span><br><span class="line">  listArea: &#123;</span><br><span class="line">    backgroundColor: <span class="hljs-string">'#f0f0f0'</span>,</span><br><span class="line">    flex: <span class="hljs-number">1</span>,</span><br><span class="line">    paddingTop: <span class="hljs-number">16</span></span><br><span class="line">  &#125;,</span><br><span class="line">  sectionHeading: &#123;</span><br><span class="line">    fontSize: <span class="hljs-number">18</span>,</span><br><span class="line">    marginBottom: <span class="hljs-number">8</span></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>출처 : <a href="https://raw.githubusercontent.com/expo/sqlite-example/master/App.js" target="_blank" rel="noopener">https://raw.githubusercontent.com/expo/sqlite-example/master/App.js</a></p>
+<p>이후 iOS를 실행하기 위해선 pod install을 해줘야한다. (unimodules 관련 패키지가 깔리는게 보인다)<br><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">cd</span> ios</span><br><span class="line">pod install</span><br><span class="line"><span class="hljs-built_in">cd</span> ..</span><br><span class="line">npm run ios</span><br></pre></td></tr></table></figure></p>
+<p>안드로이드의 경우 MainApplication에 SQLitePackate()를 포함시켜줘야한다.<br><figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> expo.modules.sqlite.SQLitePackage;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ReactModuleRegistryProvider mModuleRegistryProvider = <span class="hljs-keyword">new</span> ReactModuleRegistryProvider(Arrays.asList(</span><br><span class="line">    <span class="hljs-comment">// Your other packages will be here</span></span><br><span class="line">    <span class="hljs-keyword">new</span> SQLitePackage()</span><br><span class="line">), Arrays.asList());</span><br></pre></td></tr></table></figure></p>
+<h4 id="expo-web-browser"><a href="#expo-web-browser" class="headerlink" title="expo-web-browser"></a>expo-web-browser</h4><figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install expo-web-browser</span><br></pre></td></tr></table></figure>
+<p>마찬가지로 모듈 설치 후 MainApplication을 수정한다.</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">import</span> expo.modules.webbrowser.WebBrowserPackage;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> ReactModuleRegistryProvider mModuleRegistryProvider = <span class="hljs-keyword">new</span> ReactModuleRegistryProvider(Arrays.asList(</span><br><span class="line">  <span class="hljs-comment">// Your other packages will be here</span></span><br><span class="line">  <span class="hljs-keyword">new</span> WebBrowserPackage()</span><br><span class="line">), Arrays.asList());</span><br></pre></td></tr></table></figure>
+<p>하지만 안드로이드의 경우 에러메시지를 내면서 빌드가 되지 않는다. 에러메시지를 자세히 보면<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Caused by: com.android.builder.dexing.DexArchiveBuilderException: Error while dexing.</span><br><span class="line">The dependency contains Java 8 bytecode. Please enable desugaring by adding the following to build.gradle</span><br><span class="line">android &#123;</span><br><span class="line">    compileOptions &#123;</span><br><span class="line">        sourceCompatibility 1.8</span><br><span class="line">        targetCompatibility 1.8</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>위와 같은 내용이 나오므로, app/build.gradle 위의 compileOptions를 추가하도록 하자.<br>그러면 빌드 에러나는것도 해결이 된다.</p>
+<p>출처</p>
+<ul>
+<li><a href="https://blog.expo.io/you-can-now-use-expo-apis-in-any-react-native-app-7c3a93041331" target="_blank" rel="noopener">https://blog.expo.io/you-can-now-use-expo-apis-in-any-react-native-app-7c3a93041331</a></li>
+<li><a href="https://docs.expo.io/versions/v32.0.0/bare/hello-world/" target="_blank" rel="noopener">https://docs.expo.io/versions/v32.0.0/bare/hello-world/</a></li>
+</ul>
+
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-prev">
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop  article-nav-next">
+            
+            <a href="/2019/03/07/storybook/">storybook</a>
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="sharethis-inline-share-buttons"></div>
+<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5cbec4d22fdd8b001987b19d&amp;product=inline-share-buttons" async="async"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">댓글</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/03/19/expo-react-native-unimodules/';
+        this.page.identifier = '2019/03/19/expo-react-native-unimodules/';
+        
+        this.language = 'ko';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'finesoft' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/csbok">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("ko");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="아무거나 입력하세요">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '글',
+                PAGES: '페이지',
+                CATEGORIES: '카테고리 목록',
+                TAGS: '태그 목록',
+                UNTITLED: '(제목없음)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+<title>CSS로 Layout 구성하기 - Hexo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+
+    <meta name="description" content="스튜디오밀의 영상을 보면서 정리한 내용이다. css의 display 속성display: block (div, section)개행처리됨. 부모에게 꽉 참. 박스모델이라 너비 높이 지정 가능 display: inline (a, span, img)개행처리 안됨. 일반 텍스트 처럼 취급됨. 너비랑  높이 설정 불가 display:inline-blockinline처">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS로 Layout 구성하기">
+<meta property="og:url" content="http://yoursite.com/2019/03/07/css-layout/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="스튜디오밀의 영상을 보면서 정리한 내용이다. css의 display 속성display: block (div, section)개행처리됨. 부모에게 꽉 참. 박스모델이라 너비 높이 지정 가능 display: inline (a, span, img)개행처리 안됨. 일반 텍스트 처럼 취급됨. 너비랑  높이 설정 불가 display:inline-blockinline처">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-04-23T14:44:36.434Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CSS로 Layout 구성하기">
+<meta name="twitter:description" content="스튜디오밀의 영상을 보면서 정리한 내용이다. css의 display 속성display: block (div, section)개행처리됨. 부모에게 꽉 참. 박스모델이라 너비 높이 지정 가능 display: inline (a, span, img)개행처리 안됨. 일반 텍스트 처럼 취급됨. 너비랑  높이 설정 불가 display:inline-blockinline처">
+
+
+
+
+
+<link rel="icon" href="/favicon.png">
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css">
+
+<link rel="stylesheet" href="/css/style.css">
+
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-51076120-4"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-51076120-4');
+</script>
+
+
+    
+
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                    
+                    Finesoft.net
+                    
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            <a class="navbar-item search" title="검색" href="javascript:;">
+                <i class="fas fa-search"></i>
+            </a>
+            
+            
+            
+            <a class="navbar-item" title="GitHub" href="https://github.com/csbok">
+                
+                <i class="fab fa-github"></i>
+                
+            </a>
+               
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section">
+    <div class="container">
+    <article class="article content gallery" itemscope="" itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            CSS로 Layout 구성하기
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2019-03-07T02:55:05.000Z" itemprop="datePublished">3월 7 2019</time>
+        </span>
+        
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p><a href="https://www.youtube.com/watch?v=Zny5Vxqk6Mk" target="_blank" rel="noopener">스튜디오밀</a>의 영상을 보면서 정리한 내용이다.</p>
+<h3 id="css의-display-속성"><a href="#css의-display-속성" class="headerlink" title="css의 display 속성"></a>css의 display 속성</h3><h4 id="display-block-div-section"><a href="#display-block-div-section" class="headerlink" title="display: block (div, section)"></a>display: block (div, section)</h4><p>개행처리됨. 부모에게 꽉 참. 박스모델이라 너비 높이 지정 가능</p>
+<h4 id="display-inline-a-span-img"><a href="#display-inline-a-span-img" class="headerlink" title="display: inline (a, span, img)"></a>display: inline (a, span, img)</h4><p>개행처리 안됨. 일반 텍스트 처럼 취급됨. 너비랑  높이 설정 불가</p>
+<h4 id="display-inline-block"><a href="#display-inline-block" class="headerlink" title="display:inline-block"></a>display:inline-block</h4><p>inline처럼 일반 글자처럼 취급 되나 (바로 옆에 다른 항목이 붙을 수 있다)<br>너비와 높이를 지정 가능하다.</p>
+<h4 id="display-none"><a href="#display-none" class="headerlink" title="display: none"></a>display: none</h4><p>메뉴 같은걸 숨길때 유용함</p>
+<h3 id="CSS-Box-Model"><a href="#CSS-Box-Model" class="headerlink" title="CSS Box Model"></a>CSS Box Model</h3><h4 id="box-sizing-content-box-기본값"><a href="#box-sizing-content-box-기본값" class="headerlink" title="box-sizing: content-box (기본값)"></a>box-sizing: content-box (기본값)</h4><p>실제 컨텐츠 기준으로 크기를 설정한다. padding과 border, margin값은 이 컨텐츠 사이즈 외에 추가로 더 붙게 된다.<br><a id="more"></a></p>
+<h4 id="box-sizing-border-box"><a href="#box-sizing-border-box" class="headerlink" title="box-sizing: border-box"></a>box-sizing: border-box</h4><p>padding과 border까지가 너비 및 높이에 포함된다. 고려할게 적어지므로 더 쉽게 사용 가능하지만, IE구버전 지원이 안되므로 잘 고려해봐야한다.</p>
+<h3 id="예제-페이지"><a href="#예제-페이지" class="headerlink" title="예제 페이지"></a>예제 페이지</h3><p>2단 레이아웃을 위해 html구조를 아래와 같이 만든다.<br>inline-block을 사용하는 방식과, float, 마지막으로 반응형을 위한 css가 있으니 link태그를 바꿔서 각각 css로 확인한다.</p>
+<figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1.0, maximum-scale=3.0"</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>CSS Layout<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"inline-block.css"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span>&gt;</span></span><br><span class="line">    <span class="hljs-comment">&lt;!-- &lt;link href="float.css" rel="stylesheet"&gt; --&gt;</span></span><br><span class="line">    <span class="hljs-comment">&lt;!-- &lt;link href="respon.css" rel="stylesheet"&gt; --&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item item-a"</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>section A<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">                Section A Content<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="line">                Section A Content<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="line">                Section A Content<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="line">                Section A Content<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="line">                Section A Content<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="line">                Section A Content</span><br><span class="line">            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"item item-b"</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>section B<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span><br><span class="line">            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">                Section B Content<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="line">                Section B Content<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="line">                Section B Content<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="line">                Section B Content<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="line">                Section B Content<span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span></span><br><span class="line">                Section B Content</span><br><span class="line">            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br><span class="line">        <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span><br><span class="line">    <span class="hljs-tag">&lt;<span class="hljs-name">footer</span>&gt;</span>footer<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span></span><br><span class="line">    </span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="inline-block-css"><a href="#inline-block-css" class="headerlink" title="inline-block.css"></a>inline-block.css</h4><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">body</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">h1</span>, <span class="hljs-selector-tag">p</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.container</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">1024px</span>;</span><br><span class="line">    <span class="hljs-comment">/*margin-left: auto;</span></span><br><span class="line"><span class="hljs-comment">    margin-right: auto;*/</span></span><br><span class="line">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;</span><br><span class="line">    <span class="hljs-attribute">background</span>:pink;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.container</span><span class="hljs-selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">clear</span>:both;</span><br><span class="line">    <span class="hljs-attribute">display</span>:block;</span><br><span class="line">    <span class="hljs-attribute">content</span>:<span class="hljs-string">''</span>;</span><br><span class="line"><span class="hljs-comment">/*    height: 0;</span></span><br><span class="line"><span class="hljs-comment">    visibility: hidden;*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.item</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">display</span>:inline-block;</span><br><span class="line">    <span class="hljs-attribute">vertical-align</span>: top;</span><br><span class="line">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">5%</span>;</span><br><span class="line">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span>;</span><br><span class="line">    <span class="hljs-attribute">float</span>:left;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.item-a</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">width</span>:<span class="hljs-number">30%</span>;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.item-b</span> &#123; </span><br><span class="line">    <span class="hljs-attribute">width</span>:<span class="hljs-number">50%</span>;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">div</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">span</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>:blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">footer</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">clear</span>: both;</span><br><span class="line">    <span class="hljs-attribute">background</span>: gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="float-css"><a href="#float-css" class="headerlink" title="float.css"></a>float.css</h4><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">body</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">h1</span>, <span class="hljs-selector-tag">p</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.container</span> &#123;</span><br><span class="line">    <span class="hljs-comment">/* font-size:0; */</span></span><br><span class="line">    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">1024px</span>;</span><br><span class="line">    <span class="hljs-comment">/*margin-left: auto;</span></span><br><span class="line"><span class="hljs-comment">    margin-right: auto;*/</span></span><br><span class="line">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;</span><br><span class="line">    <span class="hljs-attribute">background</span>:pink;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.container</span><span class="hljs-selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">clear</span>:both;</span><br><span class="line">    <span class="hljs-attribute">display</span>:block;</span><br><span class="line">    <span class="hljs-attribute">content</span>:<span class="hljs-string">''</span>;</span><br><span class="line"><span class="hljs-comment">/*    height: 0;</span></span><br><span class="line"><span class="hljs-comment">    visibility: hidden;*/</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.item</span> &#123;</span><br><span class="line">    <span class="hljs-comment">/* display:inline-block;</span></span><br><span class="line"><span class="hljs-comment">    vertical-align: top; */</span></span><br><span class="line">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">5%</span>;</span><br><span class="line">    <span class="hljs-comment">/* font-size: 1rem; */</span></span><br><span class="line">    <span class="hljs-attribute">float</span>:left;</span><br><span class="line"> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.item-a</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">width</span>:<span class="hljs-number">30%</span>;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.item-b</span> &#123; </span><br><span class="line">    <span class="hljs-attribute">width</span>:<span class="hljs-number">50%</span>;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">div</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>:red;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">span</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>:blue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">footer</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">clear</span>: both;</span><br><span class="line">    <span class="hljs-attribute">background</span>: gray;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="respon-css"><a href="#respon-css" class="headerlink" title="respon.css"></a>respon.css</h4><figure class="highlight css hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-selector-tag">body</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="line">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1em</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-tag">h1</span>, <span class="hljs-selector-tag">p</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.container</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background</span>: pink;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.item</span> &#123; </span><br><span class="line">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">5%</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.item-a</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-selector-class">.item-b</span> &#123;</span><br><span class="line">    <span class="hljs-attribute">background-color</span>: yellowgreen;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">700px</span>) &#123;</span><br><span class="line">    <span class="hljs-selector-class">.container</span> &#123;</span><br><span class="line">        <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-selector-class">.item</span> &#123;</span><br><span class="line">        <span class="hljs-attribute">display</span>:inline-block;</span><br><span class="line">        <span class="hljs-attribute">vertical-align</span>: top;</span><br><span class="line">        <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-selector-class">.item-a</span> &#123;</span><br><span class="line">        <span class="hljs-attribute">width</span>: <span class="hljs-number">30%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-selector-class">.item-b</span> &#123;</span><br><span class="line">        <span class="hljs-attribute">width</span>:<span class="hljs-number">50%</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    
+    </div>
+    
+    
+    <div class="columns is-mobile is-multiline article-nav">
+        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
+            
+            <a href="/2019/03/07/storybook/">storybook</a>
+            
+        </span>
+        <span class="column is-12-mobile is-half-desktop is-hidden-mobile article-nav-next">
+            
+        </span>
+    </div>
+    
+</article>
+
+
+<div class="sharebox">
+    
+<div class="sharethis-inline-share-buttons"></div>
+<script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5cbec4d22fdd8b001987b19d&amp;product=inline-share-buttons" async="async"></script>
+
+</div>
+
+
+
+<div class="comments">
+    <h3 class="title is-4">댓글</h3>
+    
+<script>
+    var disqus_config = function () {
+        this.page.url = 'http://yoursite.com/2019/03/07/css-layout/';
+        this.page.identifier = '2019/03/07/css-layout/';
+        
+        this.language = 'ko';
+        
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + 'finesoft' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+
+<div id="disqus_thread">
+    
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+</div>
+
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2019 John Doe&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            <div class="column is-narrow">
+                <div class="columns is-mobile is-multiline is-centered">
+                
+                    
+                <a class="column is-narrow has-text-black" title="GitHub" href="https://github.com/csbok">
+                    
+                    GitHub
+                    
+                </a>
+                
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+    moment.locale("ko");
+</script>
+
+
+    
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        "HTML-CSS": {matchFontHeight: false},
+        SVG: {matchFontHeight: false},
+        CommonHTML: {matchFontHeight: false}
+    });
+</script>
+
+    
+    
+    
+    
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/js/lightgallery-all.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/js/jquery.justifiedGallery.min.js"></script>
+<script>
+    (function ($) {
+        $(document).ready(function () {
+            if (typeof($.fn.lightGallery) === 'function') {
+                $('.article.gallery').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof($.fn.justifiedGallery) === 'function') {
+                $('.justified-gallery').justifiedGallery();
+            }
+        });
+    })(jQuery);
+</script>
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <style>
+        .hljs {
+            position: relative;
+        }
+
+        .hljs .clipboard-btn {
+            float: right;
+            color: #9a9a9a;
+            background: none;
+            border: none;
+        }
+
+        .hljs > .clipboard-btn {
+            display: none;
+            position: absolute;
+            right: 4px;
+            top: 4px;
+        }
+
+        .hljs:hover > .clipboard-btn {
+            display: inline;
+        }
+
+        .hljs > figcaption > .clipboard-btn {
+            margin-right: 4px;
+        }
+    </style>
+    <script>
+      $(document).ready(function () {
+        $('figure.hljs').each(function(i, figure) {
+          var codeId = 'code-' + i;
+          var code = figure.querySelector('.code');
+          var copyButton = $('<button>Copy <i class="far fa-clipboard"></i></button>');
+          code.id = codeId;
+          copyButton.addClass('clipboard-btn');
+          copyButton.attr('data-clipboard-target-id', codeId);
+
+          var figcaption = figure.querySelector('figcaption');
+
+          if (figcaption) {
+            figcaption.append(copyButton[0]);
+          } else {
+            figure.prepend(copyButton[0]);
+          }
+        })
+
+        var clipboard = new ClipboardJS('.clipboard-btn', {
+          target: function(trigger) {
+            return document.getElementById(trigger.getAttribute('data-clipboard-target-id'));
+          }
+        });
+      })
+    </script>
+
+    
+    
+
+    
+
+
+<script src="/js/script.js"></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-mask"></div>
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="아무거나 입력하세요">
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '글',
+                PAGES: '페이지',
+                CATEGORIES: '카테고리 목록',
+                TAGS: '태그 목록',
+                UNTITLED: '(제목없음)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+</body>
+</html>
